@@ -1,20 +1,67 @@
+html,
+body,
+#wrapper {
+  width: 100%;
+  height: 100%;
+}
+
 body {
     background-image: url(../images/office2.jpg);
-    background-color: #cccccc;
-    height: 500px;
+    height: 700px;
     background-position: center;
     background-repeat: no-repeat;
-     background-size: cover;
-     position: relative;
+    background-size: cover;
+    position: relative;
 }
 
-.container {
-    width: 600px;
-    height: 700px;
+* {
+    box-sizing: border-box;
+  }
+  
+#gradient {
+    width: 98%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
 
+.jumbotron h1 {
+    font-size: 100px;
+    text-align: center;
+    color: teal;
 }
 
-#miniHorse {
+.jumbotron {
+    background: rgb(202, 183, 118);
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    margin-top: 100px;
+    height: 100%;
+}
+
+.btn-primary {
+    background-color: #98BFA3;
+    border-color: #98BFA3;
+    margin-top: 50px;
     width: 200px;
-    height: auto;
+    height: 90px;
+    font-size: 18px;
+  }
+
+.btn-primary:active:focus {
+    background-color: rgb(142, 185, 142);
+    border-color: rgb(150, 146, 90);
 }
+
+  .glyphicon-off {
+      font-size: 40px;
+      margin-top: 10px;
+
+  }
+
+  p {
+      text-align: center;
+     
+  }
+  
