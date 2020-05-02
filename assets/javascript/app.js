@@ -59,6 +59,10 @@ $(document).ready(function (){
 
     }
 
+    function notAnswered () {
+
+    }
+
 
     function startGame () { //function to start game when user clicks button 
         console.log('game started')
@@ -69,8 +73,18 @@ $(document).ready(function (){
         nextQuestion();
     }
 
-    function timer () { //countdown timer for each question
-
+    function timer () { //countdown timer for each question answered or not
+        if (timeLeft === 0) {
+            answered = true;
+            clearInterval(intervalID);
+            $('.question').text("The Correct Answer Is: " + triviaQuestions[indexTrivia].answer[rightAnswer]);
+            notAnswered();
+        } else if (answered = true) {
+            clearInterval(intervalID);
+        } else {
+            timeLeft--;
+            $('.timeRemaining').tect("You Have " + timeLeft + " Seconds Left To Answer This Question");
+        }
     }
 
     function nextQuestion () { //function to call next question with no user input 
@@ -86,13 +100,46 @@ $(document).ready(function (){
         $('.question').html(question)
         for (let i = 0; i < 4; i++) {
             let answers = triviaQuestions[indexTrivia].answers[i];
-            $('.answers').append('<h5 class= "answerResults> id=' + i + '>' + answers + '</h5>');
+            $('.answers').append('<h5 class= "answerChoices id=' + i + '>' + answers + '</h5>');
         }
+        $("h4").click(function () {
+            let id = $(this).attr('id');
+            if (id === rightAnswer) {
+                answered = true;
+                $('.question').text("The Answer Is: " + triviaQuestions[indexTrivia].answers[rightAnswer]);
+                answeredCorrect();
+            } else {
+                answered = true; 
+                $('.questions').text("You Chose: " + triviaQuestions[indexTrivia].answers[id] + "But The Answer Is Actually: " + triviaQuestions[indexTrivia].answers[rightAnswer]);
+                answeredIncorrect();
+            }
+
+        });
     }
 
     function reset () { //function to reset game after time runs out or all questions answered 
+        $('.answerChoices').remove();
+        $('.answers').append('<img class=answerImage width="160" heigth= "170" src="' + triviaQuestions[indexTrivia].image + '">');
+        indexTrivia++;
+        if (indexTrivia < triviaQuestions.length) {
+            setTimeout(function () {
+                nextQuestion();
+                $('.answerImage').remove();
+            }, 5000);
+        } else {
+            setTimeout (function () {
+                $('.question').remove();
+                $('.timeRemaining').remove();
+                $('.answerImage').remove();
+                $('answers').append('<h4 class= answerChoices end> Correct Answers: ' + correctAnswers + '</h4>');
+                $('answers').append('<h4 class= answerChoices end> Incorrect Answers: ' + inCorrectAnswers + '</h4>');
+                $('answers').append('<h4 class= answerChoices end> unanswered Questions: ' + unAnseredQuestions + '</h4>');
+                setTimeout( function () {
+                    location.reload();
+                }, 8000);
         
-    }
+            }, 5000);
+        }
 
     $('.startButton').on("click", function () {
         $('.startButton');
