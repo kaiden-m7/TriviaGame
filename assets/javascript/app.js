@@ -108,14 +108,14 @@ $(document).ready(function (){
         if (answered === false) {
             timer();
         }
-        let rightAnswer = triviaQuestions[indexTrivia].rightAnswer;
+        rightAnswer = triviaQuestions[indexTrivia].rightAnswer;
         let question = triviaQuestions[indexTrivia].question;
         $('.question').html(question)
         console.log(rightAnswer)
         console.log(triviaQuestions[indexTrivia].answers)
-        for (let i = 0; i < 8; i++) {
-            let answer = triviaQuestions[indexTrivia].answers[i];
-            $('.answers').append('<h4 class= "answerChoices id=' + i + '>' + answer + '</h4>');
+        for (var i = 0; i < 8; i++) {
+            var answers = triviaQuestions[indexTrivia].answers[i];
+            $('.answers').append(answers);
         } 
         $("h4").click(function () {
             let id = $(this).attr('id');
@@ -155,7 +155,7 @@ $(document).ready(function (){
         
             }, 5000);
         }
-    }
+    };
 
     $('.startButton').on("click", function () {
         $('.startButton');
