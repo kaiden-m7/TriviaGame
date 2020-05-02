@@ -3,10 +3,10 @@ $(document).ready(function (){
     let correctAnswers = 0;
     let inCorrectAnswers = 0;
     let rightAnswer; 
-    let unAnseredQuestions = 0;
+    let unAnsweredQuestions = 0;
     let timeLeft = 17;
-    let answered = false;
-    let intervalID = 0;
+    let answered = false; //will be used to stop timer/reset if user answered 
+    let intervalID;
     let indexTrivia = 0; //index of all in triviaQuesions array
     let triviaQuestions = [{ //trivia questions 
         question: "The show takes place in Pawnee, which state is Pawnee located?",
@@ -52,15 +52,27 @@ $(document).ready(function (){
 
 
     function answeredCorrect () { //function for when correct answer is chosen 
-
+        correctAnswers++;
+        $('.timeRemaining').text('WOW! Look at you, you are a fan after all.').css({
+            'color': '#68764A'
+        });
+        reset();
     }
 
     function answeredIncorrect () { //function when incorrect answer is chosen 
-
+        inCorrectAnswers++;
+        $('.timeRemaining').text('Well... I guess you are not a fan of the show..').css({
+            'color': '#68764A'
+        });
+        reset();
     }
 
     function notAnswered () {
-
+        unAnsweredQuestions++;
+        $('.timeRemaining').text('I seemed to have stumped you there').css({
+            'color': '#68764A'
+        });
+        reset();
     }
 
 
@@ -69,7 +81,7 @@ $(document).ready(function (){
         $('.startButton').remove();
         correctAnswers = 0;
         inCorrectAnswers = 0;
-        unAnseredQuestions = 0;
+        unAnsweredQuestions = 0;
         nextQuestion();
     }
 
@@ -83,25 +95,28 @@ $(document).ready(function (){
             clearInterval(intervalID);
         } else {
             timeLeft--;
-            $('.timeRemaining').tect("You Have " + timeLeft + " Seconds Left To Answer This Question");
+            $('.timeRemaining').text("You Have " + timeLeft + " Seconds Left To Answer This Question");
         }
     }
 
     function nextQuestion () { //function to call next question with no user input 
        console.log(triviaQuestions)
+       //console.log(intervalID)
         answered = false;
         timeLeft = 17;
         intervalID = setInterval(timer, 1000);
         if (answered === false) {
             timer();
         }
-        rightAnswer = triviaQuestions[indexTrivia].rightAnswer;
+        let rightAnswer = triviaQuestions[indexTrivia].rightAnswer;
         let question = triviaQuestions[indexTrivia].question;
         $('.question').html(question)
-        for (let i = 0; i < 4; i++) {
-            let answers = triviaQuestions[indexTrivia].answers[i];
-            $('.answers').append('<h5 class= "answerChoices id=' + i + '>' + answers + '</h5>');
-        }
+        console.log(rightAnswer)
+        console.log(triviaQuestions[indexTrivia].answers)
+        for (let i = 0; i < 8; i++) {
+            let answer = triviaQuestions[indexTrivia].answers[i];
+            $('.answers').append('<h4 class= "answerChoices id=' + i + '>' + answer + '</h4>');
+        } 
         $("h4").click(function () {
             let id = $(this).attr('id');
             if (id === rightAnswer) {
@@ -131,15 +146,16 @@ $(document).ready(function (){
                 $('.question').remove();
                 $('.timeRemaining').remove();
                 $('.answerImage').remove();
-                $('answers').append('<h4 class= answerChoices end> Correct Answers: ' + correctAnswers + '</h4>');
-                $('answers').append('<h4 class= answerChoices end> Incorrect Answers: ' + inCorrectAnswers + '</h4>');
-                $('answers').append('<h4 class= answerChoices end> unanswered Questions: ' + unAnseredQuestions + '</h4>');
+                $('.answers').append('<h4 class= answerChoices end> Correct Answers: ' + correctAnswers + '</h4>');
+                $('.answers').append('<h4 class= answerChoices end> Incorrect Answers: ' + inCorrectAnswers + '</h4>');
+                $('.answers').append('<h4 class= answerChoices end> unanswered Questions: ' + unAnseredQuestions + '</h4>');
                 setTimeout( function () {
                     location.reload();
                 }, 8000);
         
             }, 5000);
         }
+    }
 
     $('.startButton').on("click", function () {
         $('.startButton');
@@ -151,4 +167,4 @@ $(document).ready(function (){
 
 
 
-})
+});
