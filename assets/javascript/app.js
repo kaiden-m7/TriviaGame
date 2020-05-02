@@ -12,47 +12,48 @@ $(document).ready(function (){
         question: "The show takes place in Pawnee, which state is Pawnee located?",
         answers: ["California", "Ohio", "Indiana", "Pennsylvania"],
         rightAnswer: "2",
-        image: ("/assets/images/pawneeSign.jfif")
+        image: ("../assets/images/pawneeSign.jfif")
     }, {
         question: "Who is the youngest member in the office?",
         answers: ["Tom Haverford", "Andy Dwyer", "Lesie Knope", "April Ludgate"],
         rightAnswer: "3",
-        image: ("/assets/images/april.png")
+        image: ("../assets/images/april.png")
     }, {
         question: "What slogan does Tom and Donna use on a special day of the year?",
         answers: ["Treat Yo Self", "Wine is crying juice", "Party Time", "We are outta here"],
         rightAnswer: "0",
-        image: ("/assets/images/treatSelf.jpg")
+        image: ("../assets/images/treatSelf.jpg")
     },{
         question: "What is Ron Swanson's favorite meal to eat?",
         answers: ["Steak, the biggest they have", "All the bacon and eggs", "Bacon Burgers", "All of the above"],
         rightAnswer: "3",
-        image: ("/assets/images/ron1.jpg")
+        image: ("../assets/images/ron1.jpg")
     },{
         question: "Who is Donna Meagle's cousin?",
         answers: ["Lil John", "Snoop Dog", "Ginuwine", "Tom Haverford"],
         rightAnswer: "2",
-        image: ("/assets/images/donna.png")
+        image: ("../assets/images/donna.png")
     },{
         question: "Who is Lesie Knopes biggest crush?",
         answers: ["Barack Obama", "Joe Biden", "Ron Swanon", "Bernie Sanders"],
         rightAnswer: "1",
-        image: ("/assets/images/biden.jpg")
+        image: ("../assets/images/biden.jpg")
     },{
         question: "What are the names of both Ron's ex-wives and his mother?",
         answers: ["Alison", "Tammy", "Sarah", "Julie"],
         rightAnswer: "1",
-        image: ("/assets/images/tammys.webp")
+        image: ("../assets/images/tammys.webp")
     },{
         question: "Who is Lesie Knope's number one best friend?",
         answers: ["Ron Swanson", "Andy Dwyer", "Ann Perkins", "Jerry Gergich"],
         rightAnswer: "2",
-        image: ("/assets/images/ann.jpg")
+        image: ("../assets/images/ann.jpg")
     }];
 
 
     function answeredCorrect () { //function for when correct answer is chosen 
         correctAnswers++;
+
         $('.timeRemaining').text('WOW! Look at you, you are a fan after all.').css({
             'color': '#68764A'
         });
@@ -95,7 +96,7 @@ $(document).ready(function (){
             clearInterval(intervalID);
         } else {
             timeLeft--;
-            $('.timeRemaining').text("You Have " + timeLeft + " Seconds Left To Answer This Question");
+            $('.timeRemaining').append("You Have " + timeLeft + " Seconds Left To Answer This Question");
         }
     }
 
@@ -113,9 +114,9 @@ $(document).ready(function (){
         $('.question').html(question)
         console.log(rightAnswer)
         console.log(triviaQuestions[indexTrivia].answers)
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < 4; i++) {
             var answers = triviaQuestions[indexTrivia].answers[i];
-            $('.answers').append(answers);
+            $('.answers').append('<h4 class= answerChoices>' + answers + '</h4>');
         } 
         $("h4").click(function () {
             let id = $(this).attr('id');
@@ -130,7 +131,7 @@ $(document).ready(function (){
             }
 
         });
-    }
+    };
 
     function reset () { //function to reset game after time runs out or all questions answered 
         $('.answerChoices').remove();
