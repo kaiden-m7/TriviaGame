@@ -1,4 +1,5 @@
 $(document).ready(function (){
+    
     let correctAnswers = 0;
     let inCorrectAnswers = 0;
     let rightAnswer; 
@@ -6,25 +7,25 @@ $(document).ready(function (){
     let timeLeft = 20;
     let indexTrivia = 0; //index of all in triviaQuesions array
     let triviaQuestions = [{ //trivia questions 
-        question: "",
-        answers: [""],
-        rightAnswer: "",
-        image: "",
+        question: "The show takes place in Pawnee, which state is Pawnee located?",
+        answers: ["California", "Ohio", "Indiana", "Pennsylvania"],
+        rightAnswer: "2",
+        image: "/assets/images/pawneeSign.jfif"
     }, {
-        question: "",
-        answers: [""],
-        rightAnswer: "",
-        image: "",
+        question: "Who is the youngest member in the office?",
+        answers: ["Tom Haverford", "Andy Dwyer", "Lesie Knope", "April Ludgate"],
+        rightAnswer: "3",
+        image: "/assets/images/april.png",
     }, {
-        question: "",
-        answers: [""],
-        rightAnswer: "",
-        image: "",
+        question: "What slogan does Tom and Donna use on a special day of the year?",
+        answers: ["Treat Yo Self", "Wine is crying juice", "Party Time", "We are outta here"],
+        rightAnswer: "0",
+        image: "/assets/images/treatSelf.jpg",
     },{
-        question: "",
-        answers: [""],
-        rightAnswer: "",
-        image: "",
+        question: "What is Ron Swanson's favorite meal to eat?",
+        answers: ["Steak, the biggest they have", "All the bacon and eggs", "Bacon Burgers", "All of the above"],
+        rightAnswer: "3",
+        image: "/assets/images/ron1.jpg",
     },{
         question: "",
         answers: [""],
