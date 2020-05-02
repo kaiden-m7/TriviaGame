@@ -27,25 +27,25 @@ $(document).ready(function (){
         rightAnswer: "3",
         image: "/assets/images/ron1.jpg",
     },{
-        question: "",
-        answers: [""],
-        rightAnswer: "",
-        image: "",
+        question: "Who is Donna Meagle's cousin?",
+        answers: ["Lil John", "Snoop Dog", "Ginuwine", "Tom Haverford"],
+        rightAnswer: "2",
+        image: "/assets/images/donna.png",
     },{
-        question: "",
-        answers: [""],
-        rightAnswer: "",
-        image: "",
+        question: "Who is Lesie Knopes biggest crush?",
+        answers: ["Barack Obama", "Joe Biden", "Ron Swanon", "Bernie Sanders"],
+        rightAnswer: "1",
+        image: "/assets/images/biden.jpg",
     },{
-        question: "",
-        answers: [""],
-        rightAnswer: "",
-        image: "",
+        question: "What are the names of both Ron's ex-wives and his mother?",
+        answers: ["Alison", "Tammy", "Sarah", "Julie"],
+        rightAnswer: "1",
+        image: "/assets/images/tammys.webp",
     },{
-        question: "",
-        answers: [""],
-        rightAnswer: "",
-        image: "",
+        question: "Who is Lesie Knope's number one best friend?",
+        answers: ["Ron Swanson", "Andy Dwyer", "Ann Perkins", "Jerry Gergich"],
+        rightAnswer: "2",
+        image: "/assets/images/ann.jpg",
     }];
 
 
@@ -59,6 +59,7 @@ $(document).ready(function (){
 
 
     function startGame () { //function to start game when user clicks button 
+        console.log('game started')
 
     }
 
@@ -74,7 +75,11 @@ $(document).ready(function (){
         
     }
 
+    $('.startButton').on("click", function () {
+        $('.startButton');
+        startGame();
 
+    });
 
 
 
